@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcon.bootstrapcdn.com"/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>My To Do List</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#listContainer {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#TaskInput {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    transition: border-color 0.3s;
+}
+
+#TaskInput:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+#taskList {
+    list-style: none;
+}
+
+#taskList li {
+    background: #f8f9fa;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+}
+
+#taskList li:hover {
+    background: #f0f1f5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+</style>
+</head>
+<body>
+     <div>
+        <h1>My To Do List</h1>
+        <input type="text" id="TaskInput" placeholder="Enter a task">
+        <button type="button" id="addButton" onclick="addtask()">Add Task</button>
+        <ul id="TaskList"></ul>
+     </div>
+     <script>
+        const taskList = document.getElementById("TaskList");
+
+        function addtask() {
+            const textfield = document.getElementById("TaskInput");
+            const task = textfield.value.trim();
+            if (task){
+                const li = document.createElement("li");
+                li.textContent = task;
+                taskList.appendChild(li);
+                textfield.value = "";
+            }
+        }
+     </script>
+</body>
+</html>
