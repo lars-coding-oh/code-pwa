@@ -1,93 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>To-Do List App</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="manifest" href="manifest.json">
-        <meta name="theme-color" content="#8d448d">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <style>
-          body{
-    background: black;
-    margin: 0;
-    padding: 60px 40px;
-    min-height: 100vh;
-    font-family: 'Tahoma', sans-serif;
-}
-h1{
-    color: white;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
-    margin-bottom: 40px;
-}
-input {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 30px;
-    width: 350px;
-    font-size: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-input:focus{
-    outline: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-}
-button{
-    padding: 14px 28px;
-    margin-top: 25px;
-    margin-left: 15px;
-    border: 2px solid black;
-    border-radius: 30px;
-    background-color: white;
-    color: black;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: all 0.3s;
-}
-button:hover{
-    background-color: #45a049;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-}
-ul{
-    list-style: none;
-    padding: 0;
-    margin-top: 40px;
-    max-width: 550px;
-    margin-left: auto;
-    margin-right: auto;
-}
-li{
-    background: white;
-    padding: 18px 24px;
-    margin: 15px 0;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: all 0.3s;
-}
-li:hover{
-    background-color: #ffebee;
-    transform: translateX(8px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-}
-        </style>
-    </head>
-    <body>
-        <center>
-        <h1 class="text-center">To-Do List App</h1>
-        <br>
-        <input type="text" id="taskInput" placeholder="Add a Task">
-        <button onclick="addTask()">Add Task</button>
+<head>
+    <title>To-Do List App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8d448d">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background: black;
+            margin: 0;
+            padding: 60px 20px;
+            font-family: 'Tahoma', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            background: #1c1c1c;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1{
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
+        }
+
+        /* Input + button inline */
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 30px;
+            flex: 1;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        input:focus{
+            outline: none;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+
+        button{
+            padding: 14px 28px;
+            border: 2px solid black;
+            border-radius: 30px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        button:hover{
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li{
+            background: white;
+            padding: 18px 24px;
+            margin: 15px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        li:hover{
+            background-color: #ffebee;
+            transform: translateX(8px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List App</h1>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add a Task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
         <ul id="taskList"></ul>
-        </center>
-        <script>
-            const taskList = document.getElementById('taskList');
-            function addTask(){
-                const task = taskInput.value.trim();
+    </div>
+
+    <script>
+        const taskList = document.getElementById('taskList');
+        const taskInput = document.getElementById('taskInput');
+
+        function addTask(){
+            const task = taskInput.value.trim();
             if (task){
                 const li = document.createElement('li');
                 li.textContent = task;
@@ -95,13 +122,11 @@ li:hover{
                 taskList.appendChild(li);
                 taskInput.value = '';
             }
-            }
-    
-        </script>
-        <script>
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js');
-            }
-        </script>
-    </body>
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+</body>
 </html>
